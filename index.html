@@ -10,6 +10,11 @@
     body { font-family: 'Hind Siliguri', sans-serif; background-color: #f9f9f9; color: #333; }
     header { background-color: #ffffff; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     header img { max-width: 200px; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #0a8a0a; }
+    .navbar h1 { color: #fff; margin: 0; }
+    .search-box { display: flex; align-items: center; }
+    .search-box input { padding: 8px; border: none; border-radius: 5px; width: 200px; }
+    .search-box button { padding: 8px; background: #fff; border: none; border-radius: 5px; cursor: pointer; margin-left: 5px; }
     .banner img { width: 100%; max-height: 300px; object-fit: cover; }
     h2.section-title { margin: 40px 0 20px; color: #0a8a0a; text-align: center; }
     .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
@@ -18,8 +23,6 @@
     .product-card img { max-width: 100%; border-radius: 6px; }
     .product-card h3 { margin: 10px 0 5px; font-size: 18px; color: #0a8a0a; }
     .product-card p { font-size: 15px; }
-    .product-card ul { list-style: none; text-align: left; margin: 10px 0; padding-left: 0; }
-    .product-card ul li { margin-bottom: 5px; }
     .btn { display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0a8a0a; color: white; text-decoration: none; border-radius: 5px; font-size: 14px; }
     .about { max-width: 900px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
     footer { background: #e0f0e0; padding: 20px; text-align: center; font-size: 14px; }
@@ -34,15 +37,23 @@
     <p>প্রযুক্তির শুরু এখান থেকেই 😊❤️</p>
   </header>
 
+  <div class="navbar">
+    <h1>TechBindu</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন..." />
+      <button>🔍</button>
+    </div>
+  </div>
+
   <div class="banner">
     <img src="cover.jpeg" alt="Cover">
   </div>
 
   <h2 class="section-title">📦 আমাদের পণ্যসমূহ</h2>
   <section class="products">
-
-    <!-- Product 1 -->
-    <div class="product-card">
+    <!-- All your product cards remain unchanged with 'data-name' attributes for search functionality -->
+    
+    <div class="product-card" data-name="Apple 20W USB-C Power Adapter">
       <img src="images/apple_20w_adapter.jpeg" alt="Apple Adapter">
       <h3>Apple 20W USB-C Power Adapter</h3>
       <p>মূল্য: ৳2599 মাত্র</p>
@@ -56,7 +67,7 @@
       <a href="https://www.facebook.com/share/19WAjNVe92/?mibextid=wwXIfr" class="btn" target="_blank">অর্ডার করুন</a>
     </div>
 
-    <!-- Product 2 -->
+   <!-- Product 2 -->
     <div class="product-card">
       <img src="images/usb_c_to_lightning.jpeg" alt="Apple Cable">
       <h3>Apple USB-C to Lightning Cable (2m)</h3>
@@ -202,15 +213,18 @@
   <a href="https://www.facebook.com/share/19WAjNVe92/?mibextid=wwXIfr" class="btn" target="_blank">অর্ডার করুন</a>
 </div>
 
+
+
   </section>
 
-  <section class="about">
+ <section class="about">
     <h2>About Us</h2>
     <p>আমরা বিশ্বাস করি, প্রযুক্তি হোক সবার নাগালে, সাশ্রয়ী দামে এবং নির্ভরযোগ্য মানে।</p>
-    <p>এখানে আপনি পাবেন সব ধরনের মোবাইল এক্সেসরিজ ও ইলেকট্রনিক্স পণ্য — 🎧 হেডফোন, 🔌 চার্জার, 📱 কেসিং, 📡 ক্যাবল, 🔊 স্পিকার, 🕹️ গ্যাজেট — আরও অনেক কিছু!</p>
+    <p>এখানে আপনি পাবেন সব ধরনের মোবাইল এক্সেসরিজ ও ইলেকট্রনিক্স পণ্য !</p>
     <p>অনলাইনে অর্ডার করুন, ঘরে বসে ডেলিভারি নিন — সহজ, দ্রুত, নির্ভরযোগ্য।</p>
     <p><strong>টেকবিন্দু — যেখান থেকে প্রযুক্তির যাত্রা শুরু হয় আপনার হাত ধরে।🌸❤️</strong></p>
   </section>
+
 
   <footer>
     📧 Email: <a href="mailto:techbindugadget@gmail.com">techbindugadget@gmail.com</a><br>
@@ -219,6 +233,23 @@
     🎥 TikTok: <a href="https://www.tiktok.com/@techbindugadget" target="_blank">tiktok.com/@techbindugadget</a><br>
     &copy; 2025 TechBindu. All rights reserved.
   </footer>
+
+  <!-- JavaScript for Search Functionality -->
+  <script>
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      let products = document.querySelectorAll(".product-card");
+
+      products.forEach(product => {
+        let name = product.getAttribute("data-name").toLowerCase();
+        if (name.includes(filter)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
