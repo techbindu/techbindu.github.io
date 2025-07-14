@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechBindu - প্রযুক্তির শুরু এখান থেকেই</title>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
   <style>
     * {
       margin: 0;
@@ -15,25 +17,25 @@
       font-family: 'Hind Siliguri', sans-serif;
       background-color: #f9f9f9;
       color: #333;
-      position: relative; /* For watermark positioning */
+      position: relative;
     }
-    body::before { /* Watermark effect */
+    body::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('for website.jpg'); /* First image as watermark */
+      background-image: url('for website.jpg');
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
-      opacity: 0.05; /* Adjust opacity for watermark effect */
-      z-index: -1; /* Send to back */
+      opacity: 0.05;
+      z-index: -1;
     }
     header {
       background-color: #ffffff;
-      padding: 15px 20px;
+      padding: 10px 20px; /* Reduced padding to make header smaller */
       display: flex;
       align-items: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -42,39 +44,57 @@
       z-index: 1000;
     }
     header .logo {
-      max-width: 150px; /* Adjust logo size */
+      max-width: 120px; /* Reduced logo size */
       margin-right: 20px;
+      align-self: center; /* Centered logo vertically */
     }
     header .header-content {
       flex-grow: 1;
       text-align: left;
     }
     header h1 {
-      font-size: 28px;
+      font-size: 26px; /* Reduced font size */
       color: #0a8a0a;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
+    }
+    header h2 {
+      font-size: 16px; /* Reduced font size */
+      color: #0a8a0a;
+      margin-top: 8px;
+      margin-bottom: 3px;
     }
     header p {
-      font-size: 16px;
+      font-size: 14px; /* Reduced font size */
       color: #555;
+      line-height: 1.4;
     }
-    .hero-section {
-      text-align: center;
-      padding: 60px 20px;
-      background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background over watermark */
-      margin-bottom: 30px;
+    /* --- Search & Social Icons CSS --- */
+    .search-container {
+      margin-left: auto;
+      text-align: right;
     }
-    .hero-section h2 {
-      font-size: 36px;
-      color: #0a8a0a;
-      margin-bottom: 15px;
+    #searchInput {
+      padding: 8px 12px;
+      font-size: 15px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      width: 250px;
+      font-family: 'Hind Siliguri', sans-serif;
     }
-    .hero-section p {
-      font-size: 18px;
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto;
+    .social-icons {
+      margin-top: 10px;
     }
+    .social-icons a {
+      color: #555;
+      font-size: 20px; /* Icon size */
+      margin-left: 15px; /* Space between icons */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #0a8a0a; /* Green color on hover */
+    }
+    /* ---------------------- */
     h2.section-title {
       margin: 40px 0 20px;
       color: #0a8a0a;
@@ -84,27 +104,27 @@
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px; /* Increased gap for better spacing */
+      gap: 30px;
       padding: 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
     .product-card {
       background: #fff;
-      border-radius: 10px; /* Slightly more rounded corners */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Stronger shadow */
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       padding: 20px;
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      text-align: center; /* Center content within card */
+      text-align: center;
     }
     .product-card:hover {
-      transform: translateY(-8px); /* More pronounced lift */
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Stronger shadow on hover */
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
     .product-card img {
       max-width: 100%;
-      height: 200px; /* Fixed height for product images */
-      object-fit: contain; /* Ensure image fits without cropping */
+      height: 200px;
+      object-fit: contain;
       border-radius: 8px;
       margin-bottom: 15px;
     }
@@ -115,7 +135,7 @@
     }
     .product-card .price {
       font-size: 18px;
-      color: #e65c00; /* Distinct color for price */
+      color: #e65c00;
       font-weight: bold;
       margin-bottom: 10px;
     }
@@ -133,7 +153,7 @@
       padding-left: 20px;
     }
     .product-card ul li::before {
-      content: '✓'; /* Checkmark icon */
+      content: '✓';
       color: #0a8a0a;
       position: absolute;
       left: 0;
@@ -198,13 +218,20 @@
     <div class="header-content">
       <h1>TechBindu</h1>
       <p>প্রযুক্তির শুরু এখান থেকেই 😊❤️</p>
+      
+      <h2>আপনার প্রযুক্তির প্রতিটি প্রয়োজন পূরণ হোক এক ক্লিকেই!</h2>
+      <p>আমরা আপনাকে দিচ্ছি সর্বোচ্চ মানের ইলেকট্রনিক্স ও মোবাইল এক্সেসরিজ।</p>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="প্রোডাক্ট খুঁজুন...">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/19WAjNVe92/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/techbindu/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:techbindugadget@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
     </div>
   </header>
-
-  <div class="hero-section">
-    <h2>আপনার প্রযুক্তির প্রতিটি প্রয়োজন পূরণ হোক এক ক্লিকেই!</h2>
-    <p>আমরা আপনাকে দিচ্ছি সর্বোচ্চ মানের ইলেকট্রনিক্স ও মোবাইল এক্সেসরিজ, আপনার দোরগোড়ায়। সহজ শপিং, দ্রুত ডেলিভারি, নির্ভরযোগ্য পণ্য।</p>
-  </div>
 
   <h2 class="section-title">📦 আমাদের পণ্যসমূহ</h2>
   <section class="products">
@@ -480,7 +507,7 @@
     </div>
 
     <script>
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
 
       const modal = document.getElementById('orderModal');
       const closeBtn = document.querySelector('.close-btn');
@@ -493,7 +520,7 @@
 
       orderButtons.forEach(button => {
         button.addEventListener('click', function(event) {
-          event.preventDefault(); // This stops the link from going to another page
+          event.preventDefault(); 
 
           const productCard = this.closest('.product-card');
           const productName = productCard.querySelector('h3').innerText;
@@ -550,6 +577,24 @@
             submitBtn.innerText = 'অর্ডার কনফার্ম করুন';
         });
       });
+
+      // --- Search Bar JavaScript ---
+      const searchInput = document.getElementById('searchInput');
+      const productCards = document.querySelectorAll('.product-card');
+
+      searchInput.addEventListener('keyup', function(event) {
+        const searchTerm = event.target.value.toLowerCase();
+
+        productCards.forEach(card => {
+            const productName = card.querySelector('h3').innerText.toLowerCase();
+            if (productName.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+      });
+
     </script>
 </body>
 </html>
