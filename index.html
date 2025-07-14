@@ -35,66 +35,63 @@
     }
     header {
       background-color: #ffffff;
-      padding: 10px 20px; /* Reduced padding to make header smaller */
+      padding: 10px 25px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
+      gap: 20px;
     }
-    header .logo {
-      max-width: 120px; /* Reduced logo size */
-      margin-right: 20px;
-      align-self: center; /* Centered logo vertically */
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
-    header .header-content {
-      flex-grow: 1;
-      text-align: left;
+    .header-left .logo {
+      max-width: 100px;
     }
-    header h1 {
-      font-size: 26px; /* Reduced font size */
+    .site-title h1 {
+      font-size: 24px;
       color: #0a8a0a;
-      margin-bottom: 3px;
+      margin: 0;
     }
-    header h2 {
-      font-size: 16px; /* Reduced font size */
-      color: #0a8a0a;
-      margin-top: 8px;
-      margin-bottom: 3px;
-    }
-    header p {
-      font-size: 14px; /* Reduced font size */
+    .site-title p {
+      font-size: 13px;
       color: #555;
-      line-height: 1.4;
+      margin: 0;
     }
-    /* --- Search & Social Icons CSS --- */
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
     .search-container {
-      margin-left: auto;
-      text-align: right;
+      position: relative;
     }
-    #searchInput {
+    .search-input {
       padding: 8px 12px;
       font-size: 15px;
       border-radius: 6px;
       border: 1px solid #ddd;
-      width: 250px;
+      width: 280px;
       font-family: 'Hind Siliguri', sans-serif;
     }
-    .social-icons {
-      margin-top: 10px;
+    .search-icon-btn {
+        display: none;
     }
     .social-icons a {
       color: #555;
-      font-size: 20px; /* Icon size */
-      margin-left: 15px; /* Space between icons */
+      font-size: 18px;
+      margin-left: 15px;
       text-decoration: none;
       transition: color 0.3s ease;
     }
     .social-icons a:hover {
-      color: #0a8a0a; /* Green color on hover */
+      color: #0a8a0a;
     }
-    /* ---------------------- */
     h2.section-title {
       margin: 40px 0 20px;
       color: #0a8a0a;
@@ -173,7 +170,7 @@
     .btn:hover {
       background-color: #086d08;
     }
-    .about {
+    .about, footer {
       max-width: 900px;
       margin: 60px auto;
       background: #fff;
@@ -182,24 +179,10 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.07);
       text-align: center;
     }
-    .about h2 {
-      font-size: 30px;
-      color: #0a8a0a;
-      margin-bottom: 20px;
-    }
-    .about p {
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 15px;
-      color: #444;
-    }
     footer {
-      background: #e0f0e0;
-      padding: 30px;
-      text-align: center;
-      font-size: 15px;
-      color: #555;
-      margin-top: 50px;
+        background: #e0f0e0;
+        margin-top: 50px;
+        padding: 30px;
     }
     footer a {
       color: #0a8a0a;
@@ -209,27 +192,84 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* --- MOBILE RESPONSIVE CSS --- */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 15px;
+        gap: 10px;
+      }
+      .header-right {
+          flex-grow: 1;
+      }
+      .site-title, .social-icons {
+        display: none; 
+      }
+      .search-container {
+        width: 100%;
+      }
+      .search-input {
+        display: none; 
+        width: 100%;
+      }
+      .search-icon-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #333;
+        cursor: pointer;
+        padding: 5px;
+        float: right; /* Pushes icon to the very right */
+      }
+      .search-container.active {
+          position: absolute;
+          top: 5px;
+          right: 15px;
+          left: 15px;
+          width: auto;
+          z-index: 1001;
+      }
+      .search-container.active .search-input {
+          display: block;
+      }
+       .search-container.active .search-icon-btn {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+      }
+      header .logo {
+          max-width: 100px; 
+          margin-right: 15px;
+          flex-shrink: 0;
+      }
+    }
+    /* --- END OF MOBILE CSS --- */
+
   </style>
 </head>
 <body>
 
   <header>
-    <img src="new logo for techbindu black.jpg" alt="TechBindu Logo" class="logo">
-    <div class="header-content">
-      <h1>TechBindu</h1>
-      <p>প্রযুক্তির শুরু এখান থেকেই 😊❤️</p>
-      
-      <h2>আপনার প্রযুক্তির প্রতিটি প্রয়োজন পূরণ হোক এক ক্লিকেই!</h2>
-      <p>আমরা আপনাকে দিচ্ছি সর্বোচ্চ মানের ইলেকট্রনিক্স ও মোবাইল এক্সেসরিজ।</p>
+    <div class="header-left">
+      <img src="new logo for techbindu black.jpg" alt="TechBindu Logo" class="logo">
+      <div class="site-title">
+        <h1>TechBindu</h1>
+        <p>প্রযুক্তির শুরু এখান থেকেই 😊❤️</p>
+      </div>
     </div>
     
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="প্রোডাক্ট খুঁজুন...">
-        <div class="social-icons">
-            <a href="https://www.facebook.com/share/19WAjNVe92/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/techbindu/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:techbindugadget@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
+    <div class="header-right">
+      <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="প্রোডাক্ট খুঁজুন...">
+          <button id="searchIconBtn" class="search-icon-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="social-icons">
+          <a href="https://www.facebook.com/share/19WAjNVe92/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/techbindu/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:techbindugadget@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
     </div>
   </header>
 
@@ -345,47 +385,45 @@
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
 
-<div class="product-card">
-  <img src="images/prodact_9.jpeg" alt="Ultrapods Pro">
-  <h3>Ultrapods Pro True Wireless Earbuds</h3>
-  <p class="price">মূল্য: ৳550 মাত্র</p>
-  <ul>
-    <li>🎧 Super Clear HD Sound</li>
-    <li>✅ Water Resistant (IPX4)</li>
-    <li>✅ LED Battery Display</li>
-    <li>✅ Touch Control & Built-in Microphone</li>
-  </ul>
-  <a href="#" class="btn order-btn">অর্ডার করুন</a>
-</div>
+    <div class="product-card">
+      <img src="images/prodact_9.jpeg" alt="Ultrapods Pro">
+      <h3>Ultrapods Pro True Wireless Earbuds</h3>
+      <p class="price">মূল্য: ৳550 মাত্র</p>
+      <ul>
+        <li>🎧 Super Clear HD Sound</li>
+        <li>✅ Water Resistant (IPX4)</li>
+        <li>✅ LED Battery Display</li>
+        <li>✅ Touch Control & Built-in Microphone</li>
+      </ul>
+      <a href="#" class="btn order-btn">অর্ডার করুন</a>
+    </div>
 
-<div class="product-card">
-  <img src="images/prodact_10.jpeg" alt="VDENMENV DP43">
-  <h3>VDENMENV DP43 – 10000mAh Power Bank</h3>
-  <p class="price">মূল্য: ৳1399 মাত্র</p>
-  <ul>
-    <li>⚡ 22.5W PD + QC 3.0 Fast Charging</li>
-    <li>✅ Digital Display</li>
-    <li>✅ Type-C + USB Output</li>
-    <li>✅ Slim, Stylish & Portable</li> 
-    <li>✅ Budget Friendly</li>
-  </ul>
-  <a href="#" class="btn order-btn">অর্ডার করুন</a>
-</div>
+    <div class="product-card">
+      <img src="images/prodact_10.jpeg" alt="VDENMENV DP43">
+      <h3>VDENMENV DP43 – 10000mAh Power Bank</h3>
+      <p class="price">মূল্য: ৳1399 মাত্র</p>
+      <ul>
+        <li>⚡ 22.5W PD + QC 3.0 Fast Charging</li>
+        <li>✅ Digital Display</li>
+        <li>✅ Type-C + USB Output</li>
+        <li>✅ Slim, Stylish & Portable</li> 
+        <li>✅ Budget Friendly</li>
+      </ul>
+      <a href="#" class="btn order-btn">অর্ডার করুন</a>
+    </div>
 
-<div class="product-card">
-  <img src="images/prodact_11.jpeg" alt="CasePro Rugged">
-  <h3>CasePro Rugged Armor Back Cover</h3>
-  <p class="price">মূল্য: ৳350 মাত্র</p>
-  <ul>
-    <li>📱 Shockproof 3-Part Design</li>
-    <li>🧲 Camera Protection</li>
-    <li>✨ Slim & Elegant Finish</li>
-    <li>✅ Multiple Color Options</li>
-  </ul>
- <a href="#" class="btn order-btn">অর্ডার করুন</a>
-</div>
-
-
+    <div class="product-card">
+      <img src="images/prodact_11.jpeg" alt="CasePro Rugged">
+      <h3>CasePro Rugged Armor Back Cover</h3>
+      <p class="price">মূল্য: ৳350 মাত্র</p>
+      <ul>
+        <li>📱 Shockproof 3-Part Design</li>
+        <li>🧲 Camera Protection</li>
+        <li>✨ Slim & Elegant Finish</li>
+        <li>✅ Multiple Color Options</li>
+      </ul>
+     <a href="#" class="btn order-btn">অর্ডার করুন</a>
+    </div>
   </section>
 
   <section class="about">
@@ -405,79 +443,17 @@
   </footer>
 
  <style>
-      .modal {
-        display: none; 
-        position: fixed;
-        z-index: 2000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.5);
-      }
-      .modal-content {
-        background-color: #fefefe;
-        margin: 10% auto;
-        padding: 30px;
-        border: 1px solid #888;
-        width: 90%;
-        max-width: 500px;
-        border-radius: 10px;
-        position: relative;
-        font-family: 'Hind Siliguri', sans-serif;
-      }
-      .close-btn {
-        color: #aaa;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      .modal-content h3 {
-        color: #0a8a0a;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      .modal-content .form-group {
-        margin-bottom: 15px;
-      }
-      .modal-content label {
-        display: block;
-        margin-bottom: 5px;
-        text-align: left;
-      }
-      .modal-content input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-      }
-      .modal-content .submit-btn {
-        width: 100%;
-        padding: 12px;
-        background: #0a8a0a;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .modal-content .submit-btn:hover {
-        background-color: #086d08;
-      }
-      #thankYouMessage {
-        text-align: center;
-        color: #0a8a0a;
-        font-size: 18px;
-      }
+      .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+      .modal-content { background-color: #fefefe; margin: 10% auto; padding: 30px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 10px; position: relative; font-family: 'Hind Siliguri', sans-serif; }
+      .close-btn { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+      .modal-content h3 { color: #0a8a0a; margin-bottom: 20px; text-align: center; }
+      .modal-content .form-group { margin-bottom: 15px; }
+      .modal-content label { display: block; margin-bottom: 5px; text-align: left; }
+      .modal-content input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+      .modal-content .submit-btn { width: 100%; padding: 12px; background: #0a8a0a; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
+      .modal-content .submit-btn:hover { background-color: #086d08; }
+      #thankYouMessage { text-align: center; color: #0a8a0a; font-size: 18px; }
     </style>
-
     <div id="orderModal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
@@ -485,30 +461,19 @@
         <form id="orderForm">
           <div id="formContent">
             <input type="hidden" id="productName" name="productName" value="">
-            <div class="form-group">
-              <label for="customerName">আপনার নাম</label>
-              <input type="text" id="customerName" name="customerName" required>
-            </div>
-            <div class="form-group">
-              <label for="address">সম্পূর্ণ ঠিকানা</label>
-              <input type="text" id="address" name="address" required>
-            </div>
-            <div class="form-group">
-              <label for="phoneNumber">ফোন নম্বর</label>
-              <input type="text" id="phoneNumber" name="phoneNumber" required>
-            </div>
+            <div class="form-group"><label for="customerName">আপনার নাম</label><input type="text" id="customerName" name="customerName" required></div>
+            <div class="form-group"><label for="address">সম্পূর্ণ ঠিকানা</label><input type="text" id="address" name="address" required></div>
+            <div class="form-group"><label for="phoneNumber">ফোন নম্বর</label><input type="text" id="phoneNumber" name="phoneNumber" required></div>
             <button type="submit" class="submit-btn" id="submitBtn">অর্ডার কনফার্ম করুন</button>
           </div>
-          <div id="thankYouMessage" style="display: none;">
-            <p>আপনার অর্ডারটি গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। 😊</p>
-          </div>
+          <div id="thankYouMessage" style="display: none;"><p>আপনার অর্ডারটি গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। 😊</p></div>
         </form>
       </div>
     </div>
 
     <script>
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
-
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
+      
       const modal = document.getElementById('orderModal');
       const closeBtn = document.querySelector('.close-btn');
       const orderForm = document.getElementById('orderForm');
@@ -517,56 +482,36 @@
       const formContent = document.getElementById('formContent');
       const thankYouMessage = document.getElementById('thankYouMessage');
       const submitBtn = document.getElementById('submitBtn');
-
       orderButtons.forEach(button => {
         button.addEventListener('click', function(event) {
           event.preventDefault(); 
-
           const productCard = this.closest('.product-card');
           const productName = productCard.querySelector('h3').innerText;
-          
           productNameInput.value = productName;
-          
           formContent.style.display = 'block';
           thankYouMessage.style.display = 'none';
           orderForm.reset();
-          
           modal.style.display = 'block';
         });
       });
-
-      closeBtn.onclick = function() {
-        modal.style.display = 'none';
-      }
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = 'none';
-        }
-      }
-
+      closeBtn.onclick = function() { modal.style.display = 'none'; }
+      window.onclick = function(event) { if (event.target == modal) { modal.style.display = 'none'; } }
       orderForm.addEventListener('submit', function(e) {
         e.preventDefault(); 
         submitBtn.disabled = true;
         submitBtn.innerText = 'অপেক্ষা করুন...';
-        
         const formData = new FormData(orderForm);
         const data = Object.fromEntries(formData);
-
         fetch(SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors', 
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: {'Content-Type': 'application/json',},
           body: JSON.stringify(data)
         })
         .then(res => {
            formContent.style.display = 'none';
            thankYouMessage.style.display = 'block';
-           
-           setTimeout(() => {
-             modal.style.display = 'none';
-           }, 4000);
+           setTimeout(() => { modal.style.display = 'none'; }, 4000);
         })
         .catch(error => {
           console.error('Error!', error.message);
@@ -578,13 +523,11 @@
         });
       });
 
-      // --- Search Bar JavaScript ---
+      // --- Search Bar Filter JavaScript ---
       const searchInput = document.getElementById('searchInput');
       const productCards = document.querySelectorAll('.product-card');
-
       searchInput.addEventListener('keyup', function(event) {
         const searchTerm = event.target.value.toLowerCase();
-
         productCards.forEach(card => {
             const productName = card.querySelector('h3').innerText.toLowerCase();
             if (productName.includes(searchTerm)) {
@@ -593,6 +536,28 @@
                 card.style.display = 'none';
             }
         });
+      });
+
+      // --- Mobile Search Icon Toggle JavaScript ---
+      const searchIconBtn = document.getElementById('searchIconBtn');
+      const searchContainer = document.querySelector('.search-container');
+      const mainHeader = document.querySelector('header');
+
+      searchIconBtn.addEventListener('click', function (event) {
+          event.stopPropagation();
+          searchContainer.classList.toggle('active');
+          if (searchContainer.classList.contains('active')) {
+              searchInput.focus(); 
+          }
+      });
+      
+      document.addEventListener('click', function (event) {
+          if (window.innerWidth <= 768) {
+              const isClickInsideHeader = mainHeader.contains(event.target);
+              if (!isClickInsideHeader && searchContainer.classList.contains('active')) {
+                   searchContainer.classList.remove('active');
+              }
+          }
       });
 
     </script>
