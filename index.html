@@ -13,6 +13,9 @@
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+        scroll-behavior: smooth; /* Enables smooth scrolling */
+    }
     body {
       font-family: 'Hind Siliguri', sans-serif;
       background-color: #f9f9f9;
@@ -49,6 +52,10 @@
         display: flex;
         align-items: center;
         gap: 15px;
+    }
+    .header-left .logo-link {
+        display: flex;
+        align-items: center;
     }
     .header-left .logo {
       max-width: 100px;
@@ -113,6 +120,7 @@
       padding: 20px;
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       text-align: center;
+      display: none; 
     }
     .product-card:hover {
       transform: translateY(-8px);
@@ -170,6 +178,28 @@
     .btn:hover {
       background-color: #086d08;
     }
+    #pagination-container {
+        text-align: center;
+        margin: 30px 20px;
+    }
+    .pagination-btn {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        color: #0a8a0a;
+        padding: 8px 14px;
+        margin: 0 4px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .pagination-btn:hover {
+        background-color: #e0f0e0;
+    }
+    .pagination-btn.active {
+        background-color: #0a8a0a;
+        color: white;
+        border-color: #0a8a0a;
+    }
     .about, footer {
       max-width: 900px;
       margin: 60px auto;
@@ -193,7 +223,6 @@
       text-decoration: underline;
     }
 
-    /* --- MOBILE RESPONSIVE CSS --- */
     @media (max-width: 768px) {
       header {
         padding: 10px 15px;
@@ -220,7 +249,7 @@
         color: #333;
         cursor: pointer;
         padding: 5px;
-        float: right; /* Pushes icon to the very right */
+        float: right; 
       }
       .search-container.active {
           position: absolute;
@@ -245,7 +274,6 @@
           flex-shrink: 0;
       }
     }
-    /* --- END OF MOBILE CSS --- */
 
   </style>
 </head>
@@ -253,10 +281,12 @@
 
   <header>
     <div class="header-left">
-      <img src="new logo for techbindu black.jpg" alt="TechBindu Logo" class="logo">
+      <a href="" class="logo-link">
+        <img src="new logo for techbindu black.jpg" alt="TechBindu Logo" class="logo">
+      </a>
       <div class="site-title">
         <h1>TechBindu</h1>
-        <p>প্রযুক্তির শুরু এখান থেকেই 😊❤️</p>
+        <p>প্রযুক্তির শুরু এখান থেকেই❤️</p>
       </div>
     </div>
     
@@ -426,6 +456,8 @@
     </div>
   </section>
 
+  <div id="pagination-container"></div>
+
   <section class="about">
     <h2>আমাদের সম্পর্কে</h2>
     <p>আমরা বিশ্বাস করি, প্রযুক্তি হোক সবার নাগালে, সাশ্রয়ী দামে এবং নির্ভরযোগ্য মানে।</p>
@@ -472,94 +504,154 @@
     </div>
 
     <script>
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
-      
-      const modal = document.getElementById('orderModal');
-      const closeBtn = document.querySelector('.close-btn');
-      const orderForm = document.getElementById('orderForm');
-      const productNameInput = document.getElementById('productName');
-      const orderButtons = document.querySelectorAll('.order-btn');
-      const formContent = document.getElementById('formContent');
-      const thankYouMessage = document.getElementById('thankYouMessage');
-      const submitBtn = document.getElementById('submitBtn');
-      orderButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-          event.preventDefault(); 
-          const productCard = this.closest('.product-card');
-          const productName = productCard.querySelector('h3').innerText;
-          productNameInput.value = productName;
-          formContent.style.display = 'block';
-          thankYouMessage.style.display = 'none';
-          orderForm.reset();
-          modal.style.display = 'block';
-        });
-      });
-      closeBtn.onclick = function() { modal.style.display = 'none'; }
-      window.onclick = function(event) { if (event.target == modal) { modal.style.display = 'none'; } }
-      orderForm.addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'অপেক্ষা করুন...';
-        const formData = new FormData(orderForm);
-        const data = Object.fromEntries(formData);
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors', 
-          headers: {'Content-Type': 'application/json',},
-          body: JSON.stringify(data)
-        })
-        .then(res => {
-           formContent.style.display = 'none';
-           thankYouMessage.style.display = 'block';
-           setTimeout(() => { modal.style.display = 'none'; }, 4000);
-        })
-        .catch(error => {
-          console.error('Error!', error.message);
-          alert('দুঃখিত, একটি সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।');
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'অর্ডার কনফার্ম করুন';
-        });
-      });
+      // All scripts are wrapped in DOMContentLoaded to ensure the page is loaded first
+      document.addEventListener('DOMContentLoaded', function() {
 
-      // --- Search Bar Filter JavaScript ---
-      const searchInput = document.getElementById('searchInput');
-      const productCards = document.querySelectorAll('.product-card');
-      searchInput.addEventListener('keyup', function(event) {
-        const searchTerm = event.target.value.toLowerCase();
-        productCards.forEach(card => {
-            const productName = card.querySelector('h3').innerText.toLowerCase();
-            if (productName.includes(searchTerm)) {
+        // --- Order Modal Script ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
+        const modal = document.getElementById('orderModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const orderForm = document.getElementById('orderForm');
+        const productNameInput = document.getElementById('productName');
+        const orderButtons = document.querySelectorAll('.order-btn');
+        const formContent = document.getElementById('formContent');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        orderButtons.forEach(button => {
+          button.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            const productCard = this.closest('.product-card');
+            const productName = productCard.querySelector('h3').innerText;
+            productNameInput.value = productName;
+            formContent.style.display = 'block';
+            thankYouMessage.style.display = 'none';
+            orderForm.reset();
+            modal.style.display = 'block';
+          });
+        });
+
+        closeBtn.onclick = function() { modal.style.display = 'none'; }
+        window.onclick = function(event) { if (event.target == modal) { modal.style.display = 'none'; } }
+        
+        orderForm.addEventListener('submit', function(e) {
+          e.preventDefault(); 
+          submitBtn.disabled = true;
+          submitBtn.innerText = 'অপেক্ষা করুন...';
+          const formData = new FormData(orderForm);
+          const data = Object.fromEntries(formData);
+          fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', 
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify(data)
+          })
+          .then(res => {
+             formContent.style.display = 'none';
+             thankYouMessage.style.display = 'block';
+             setTimeout(() => { modal.style.display = 'none'; }, 4000);
+          })
+          .catch(error => {
+            console.error('Error!', error.message);
+            alert('দুঃখিত, একটি সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।');
+          })
+          .finally(() => {
+              submitBtn.disabled = false;
+              submitBtn.innerText = 'অর্ডার কনফার্ম করুন';
+          });
+        });
+
+        // --- Search, Pagination, and Mobile Toggle Scripts ---
+        const searchInput = document.getElementById('searchInput');
+        const allProductCards = Array.from(document.querySelectorAll('.product-card'));
+        const paginationContainer = document.getElementById('pagination-container');
+        const productsSection = document.querySelector('.products');
+        
+        const productsPerPage = 6;
+        let currentPage = 1;
+
+        function setupPagination(totalPages, productsToPaginate) {
+            paginationContainer.innerHTML = ''; 
+            if (totalPages <= 1) return; // Don't show pagination if there's only one page
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.classList.add('pagination-btn');
+                if (i === currentPage) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    // We only need to redisplay the products, not re-setup pagination from here
+                    displayProducts(productsToPaginate);
+                    updateActiveButton();
+                    productsSection.scrollIntoView({ behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(btn);
+            }
+        }
+        
+        function updateActiveButton() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.pagination-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            // Add active class to the correct button
+            const activeBtn = paginationContainer.querySelector(`.pagination-btn:nth-child(${currentPage})`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+
+        function displayProducts(products) {
+            allProductCards.forEach(card => card.style.display = 'none');
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShowOnPage = products.slice(startIndex, endIndex);
+            productsToShowOnPage.forEach(card => {
                 card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
+            });
+        }
+
+        function handleFilterAndPagination() {
+          const searchTerm = searchInput.value.toLowerCase();
+          const filteredProducts = allProductCards.filter(card => {
+              const productName = card.querySelector('h3').innerText.toLowerCase();
+              return productName.includes(searchTerm);
+          });
+          
+          currentPage = 1; 
+          displayProducts(filteredProducts);
+          setupPagination(Math.ceil(filteredProducts.length / productsPerPage), filteredProducts);
+        }
+
+        searchInput.addEventListener('keyup', handleFilterAndPagination);
+        
+        handleFilterAndPagination();
+
+
+        // --- Mobile Search Icon Toggle JavaScript ---
+        const searchIconBtn = document.getElementById('searchIconBtn');
+        const searchContainer = document.querySelector('.search-container');
+        const mainHeader = document.querySelector('header');
+        searchIconBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchInput.focus(); 
             }
         });
-      });
-
-      // --- Mobile Search Icon Toggle JavaScript ---
-      const searchIconBtn = document.getElementById('searchIconBtn');
-      const searchContainer = document.querySelector('.search-container');
-      const mainHeader = document.querySelector('header');
-
-      searchIconBtn.addEventListener('click', function (event) {
-          event.stopPropagation();
-          searchContainer.classList.toggle('active');
-          if (searchContainer.classList.contains('active')) {
-              searchInput.focus(); 
-          }
-      });
+        document.addEventListener('click', function (event) {
+            if (window.innerWidth <= 768) {
+                const isClickInsideHeader = mainHeader.contains(event.target);
+                if (!isClickInsideHeader && searchContainer.classList.contains('active')) {
+                     searchContainer.classList.remove('active');
+                }
+            }
+        });
       
-      document.addEventListener('click', function (event) {
-          if (window.innerWidth <= 768) {
-              const isClickInsideHeader = mainHeader.contains(event.target);
-              if (!isClickInsideHeader && searchContainer.classList.contains('active')) {
-                   searchContainer.classList.remove('active');
-              }
-          }
       });
-
     </script>
 </body>
 </html>
