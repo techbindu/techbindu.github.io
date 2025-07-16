@@ -14,7 +14,7 @@
       box-sizing: border-box;
     }
     html {
-        scroll-behavior: smooth; /* Enables smooth scrolling */
+        scroll-behavior: smooth;
     }
     body {
       font-family: 'Hind Siliguri', sans-serif;
@@ -222,57 +222,35 @@
     footer a:hover {
       text-decoration: underline;
     }
+    
+    /* --- Styles for Order Modal --- */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+    .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 10px; position: relative; font-family: 'Hind Siliguri', sans-serif; }
+    .close-btn { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .modal-content h3 { color: #0a8a0a; margin-bottom: 20px; text-align: center; }
+    .modal-content .form-group { margin-bottom: 15px; }
+    .modal-content label { display: block; margin-bottom: 5px; text-align: left; font-weight: bold; }
+    .modal-content input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+    .delivery-info { background-color: #f0fff0; border: 1px solid #d4edda; border-radius: 5px; padding: 15px; margin-bottom: 15px; font-size: 14px; }
+    .delivery-options label { font-weight: normal; }
+    .total-price-display { margin-top: 20px; padding-top: 15px; border-top: 2px dashed #eee; text-align: right; font-size: 18px; font-weight: bold; }
+    #totalPrice { color: #e65c00; }
+    .submit-btn { width: 100%; padding: 12px; background: #0a8a0a; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
+    .submit-btn:hover { background-color: #086d08; }
+    #thankYouMessage { text-align: center; color: #0a8a0a; font-size: 18px; }
 
+    /* --- MOBILE RESPONSIVE CSS --- */
     @media (max-width: 768px) {
-      header {
-        padding: 10px 15px;
-        gap: 10px;
-      }
-      .header-right {
-          flex-grow: 1;
-      }
-      .site-title, .social-icons {
-        display: none; 
-      }
-      .search-container {
-        width: 100%;
-      }
-      .search-input {
-        display: none; 
-        width: 100%;
-      }
-      .search-icon-btn {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 20px;
-        color: #333;
-        cursor: pointer;
-        padding: 5px;
-        float: right; 
-      }
-      .search-container.active {
-          position: absolute;
-          top: 5px;
-          right: 15px;
-          left: 15px;
-          width: auto;
-          z-index: 1001;
-      }
-      .search-container.active .search-input {
-          display: block;
-      }
-       .search-container.active .search-icon-btn {
-          position: absolute;
-          top: 50%;
-          right: 10px;
-          transform: translateY(-50%);
-      }
-      header .logo {
-          max-width: 100px; 
-          margin-right: 15px;
-          flex-shrink: 0;
-      }
+      header { padding: 10px 15px; gap: 10px; }
+      .header-right { flex-grow: 1; }
+      .site-title, .social-icons { display: none; }
+      .search-container { width: 100%; }
+      .search-input { display: none; width: 100%; }
+      .search-icon-btn { display: block; background: none; border: none; font-size: 20px; color: #333; cursor: pointer; padding: 5px; float: right; }
+      .search-container.active { position: absolute; top: 5px; right: 15px; left: 15px; width: auto; z-index: 1001; }
+      .search-container.active .search-input { display: block; }
+      .search-container.active .search-icon-btn { position: absolute; top: 50%; right: 10px; transform: translateY(-50%); }
+      header .logo { max-width: 100px; margin-right: 15px; flex-shrink: 0; }
     }
 
   </style>
@@ -286,7 +264,7 @@
       </a>
       <div class="site-title">
         <h1>TechBindu</h1>
-        <p>প্রযুক্তির শুরু এখান থেকেই❤️</p>
+        <p>প্রযুক্তির শুরু এখান থেকেই ❤️</p>
       </div>
     </div>
     
@@ -309,195 +287,100 @@
       <img src="images/apple_20w_adapter.jpeg" alt="Apple Adapter">
       <h3>Apple 20W USB-C Power Adapter</h3>
       <p class="price">মূল্য: ৳2599 মাত্র</p>
-      <ul>
-        <li>Fast Charging | Optimal Performance</li>
-        <li>iPhone, iPad, AirPods ও Apple Watch এর জন্য উপযোগী</li>
-        <li>USB-C Interface, 3-Pin Plug</li>
-        <li>Cable অন্তর্ভুক্ত না</li>
-        <li>Trusted Apple Quality</li>
-      </ul>
+      <ul><li>Fast Charging | Optimal Performance</li><li>iPhone, iPad, AirPods ও Apple Watch এর জন্য উপযোগী</li><li>USB-C Interface, 3-Pin Plug</li><li>Cable অন্তর্ভুক্ত না</li><li>Trusted Apple Quality</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/usb_c_to_lightning.jpeg" alt="Apple Cable">
       <h3>Apple USB-C to Lightning Cable (2m)</h3>
       <p class="price">মূল্য: ৳499 মাত্র</p>
-      <ul>
-        <li>iPhone ও iPad এর সাথে সামঞ্জস্যপূর্ণ</li>
-        <li>Super Fast Data Sync</li>
-        <li>Durable ও Long-lasting</li>
-        <li>স্টক সীমিত!</li>
-      </ul>
+      <ul><li>iPhone ও iPad এর সাথে সামঞ্জস্যপূর্ণ</li><li>Super Fast Data Sync</li><li>Durable ও Long-lasting</li><li>স্টক সীমিত!</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/samsung_25w_adapter.jpeg" alt="Samsung Charger">
       <h3>Samsung Super Fast Charger 25W PD Adapter</h3>
       <p class="price">মূল্য: ৳1299 মাত্র</p>
-      <ul>
-        <li>⚡ Super Fast Charging Support</li>
-        <li>🔌 USB-C PD (Power Delivery)</li>
-        <li>🔥 Overheat Protection</li>
-        <li>📱 Samsung ফোনের জন্য উপযোগী</li>
-        <li>✅ Trusted Original Quality</li>
-      </ul>
+      <ul><li>⚡ Super Fast Charging Support</li><li>🔌 USB-C PD (Power Delivery)</li><li>🔥 Overheat Protection</li><li>📱 Samsung ফোনের জন্য উপযোগী</li><li>✅ Trusted Original Quality</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/m10_wireless_earbuds.jpeg" alt="M10 Earbuds">
       <h3>M10 TWS Wireless Earbuds</h3>
       <p class="price">মূল্য: ৳449 মাত্র</p>
-      <ul>
-        <li>🔋 2500mAh Charging Box (Power Bank হিসেবেও ব্যবহারযোগ্য)</li>
-        <li>🎧 HD Stereo Sound & Noise Reduction</li>
-        <li>💧 Waterproof & Sweatproof Design</li>
-        <li>🔗 সব ডিভাইসের সাথে Bluetooth Compatible</li>
-        <li>✅ স্টাইলিশ ও সাশ্রয়ী</li>
-      </ul>
+      <ul><li>🔋 2500mAh Charging Box</li><li>🎧 HD Stereo Sound & Noise Reduction</li><li>💧 Waterproof & Sweatproof Design</li><li>🔗 সব ডিভাইসের সাথে Bluetooth Compatible</li><li>✅ স্টাইলিশ ও সাশ্রয়ী</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/stainless_steel_flask.jpeg" alt="Smart Flask">
       <h3>Smart LED Temperature Flask</h3>
       <p class="price">মূল্য: ৳599 মাত্র</p>
-      <ul>
-        <li>🌡️ LED Touch Temperature Display</li>
-        <li>🔥 12-24 ঘন্টা গরম/ঠান্ডা রাখে</li>
-        <li>🧊 Double Wall Stainless Steel</li>
-        <li>🚫 BPA-Free এবং Leakproof</li>
-        <li>✅ স্টাইলিশ ও টেকসই</li>
-      </ul>
+      <ul><li>🌡️ LED Touch Temperature Display</li><li>🔥 12-24 ঘন্টা গরম/ঠান্ডা রাখে</li><li>🧊 Double Wall Stainless Steel</li><li>🚫 BPA-Free এবং Leakproof</li><li>✅ স্টাইলিশ ও টেকসই</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/prodact_6.jpeg" alt="Awei Y887">
       <h3>Awei Y887 Portable Bluetooth Speaker</h3>
       <p class="price">মূল্য: ৳3699 মাত্র</p>
-      <ul>
-        <li>✅ Super Bass & Clear Sound</li>
-        <li>✅ Portable & Stylish Design</li>
-        <li>✅ Bluetooth 5.0 Compatible</li>
-        <li>✅ Long Battery Backup</li>
-        <li>✅ FM, USB, AUX Supported</li>
-      </ul>
+      <ul><li>✅ Super Bass & Clear Sound</li><li>✅ Portable & Stylish Design</li><li>✅ Bluetooth 5.0 Compatible</li><li>✅ Long Battery Backup</li><li>✅ FM, USB, AUX Supported</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/prodact_7.jpeg" alt="Awei P5K">
       <h3>Awei P5K 10000 mAh Power Bank</h3>
       <p class="price">মূল্য: ৳999 মাত্র</p>
-      <ul>
-        <li>✅ Dual USB Output</li>
-        <li>✅ Compact & Lightweight</li>
-        <li>✅ Safe & Fast Charging</li>
-        <li>✅ LED Indicator </li>
-        <li>✅ Best Seller!</li>
-      </ul>
+      <ul><li>✅ Dual USB Output</li><li>✅ Compact & Lightweight</li><li>✅ Safe & Fast Charging</li><li>✅ LED Indicator </li><li>✅ Best Seller!</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/prodact_8.jpeg" alt="T800 Ultra">
       <h3>T800 Ultra smart watch </h3>
       <p class="price">মূল্য: ৳850 মাত্র</p>
-      <ul>
-        <li>🌬️ Heart Rate Sensor</li>
-        <li>🔋 Wireless Charging </li>
-        <li>🌈 Available in Multiple Colors</li>
-        <li>✅ Waterproof Design</li>
-      </ul>
+      <ul><li>🌬️ Heart Rate Sensor</li><li>🔋 Wireless Charging </li><li>🌈 Available in Multiple Colors</li><li>✅ Waterproof Design</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/prodact_9.jpeg" alt="Ultrapods Pro">
       <h3>Ultrapods Pro True Wireless Earbuds</h3>
       <p class="price">মূল্য: ৳550 মাত্র</p>
-      <ul>
-        <li>🎧 Super Clear HD Sound</li>
-        <li>✅ Water Resistant (IPX4)</li>
-        <li>✅ LED Battery Display</li>
-        <li>✅ Touch Control & Built-in Microphone</li>
-      </ul>
+      <ul><li>🎧 Super Clear HD Sound</li><li>✅ Water Resistant (IPX4)</li><li>✅ LED Battery Display</li><li>✅ Touch Control & Built-in Microphone</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/prodact_10.jpeg" alt="VDENMENV DP43">
       <h3>VDENMENV DP43 – 10000mAh Power Bank</h3>
       <p class="price">মূল্য: ৳1399 মাত্র</p>
-      <ul>
-        <li>⚡ 22.5W PD + QC 3.0 Fast Charging</li>
-        <li>✅ Digital Display</li>
-        <li>✅ Type-C + USB Output</li>
-        <li>✅ Slim, Stylish & Portable</li> 
-        <li>✅ Budget Friendly</li>
-      </ul>
+      <ul><li>⚡ 22.5W PD + QC 3.0 Fast Charging</li><li>✅ Digital Display</li><li>✅ Type-C + USB Output</li><li>✅ Slim, Stylish & Portable</li> <li>✅ Budget Friendly</li></ul>
       <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
     <div class="product-card">
       <img src="images/prodact_11.jpeg" alt="CasePro Rugged">
       <h3>CasePro Rugged Armor Back Cover</h3>
       <p class="price">মূল্য: ৳350 মাত্র</p>
-      <ul>
-        <li>📱 Shockproof 3-Part Design</li>
-        <li>🧲 Camera Protection</li>
-        <li>✨ Slim & Elegant Finish</li>
-        <li>✅ Multiple Color Options</li>
-      </ul>
+      <ul><li>📱 Shockproof 3-Part Design</li><li>🧲 Camera Protection</li><li>✨ Slim & Elegant Finish</li><li>✅ Multiple Color Options</li></ul>
      <a href="#" class="btn order-btn">অর্ডার করুন</a>
     </div>
-
-  <div class="product-card">
-  <img src="images/airpods pro 2nd gen.jpg" alt="AirPods Pro 2nd Gen">
-  <h3>Apple AirPods Pro (2nd Gen)</h3>
-  <p class="price">মূল্য: ৳799 মাত্র</p> 
-  <ul>
-    <li>নতুন প্রযুক্তি ও আরও ভালো ব্যাটারি ব্যাকআপ</li>
-    <li>Crystal Clear সাউন্ড কোয়ালিটি</li>
-    <li>অফিস, বাসা বা চলতে ফিরতে, সব জায়গায় পারফেক্ট</li>
-    <li>অর্ডার করুন আজই, সীমিত স্টকে পাচ্ছেন সেরা দামে!</li>
-    <li>অর্ডার করতে ইনবক্স করুন</li>
-  </ul>
-  <a href="#" class="btn order-btn">অর্ডার করুন</a>
- </div>
-
- <div class="product-card">
-  <img src="images/wpg ups.jpg" alt="WGP Mini UPS">
-  <h3>WGP Mini UPS</h3>
-  <p class="price">মূল্য: ৳1850 মাত্র</p>
-  <ul>
-    <li>10400mAh হাই ক্যাপাসিটি ব্যাকআপ</li>
-    <li>রাউটার, ONU, CCTV ও IP ক্যামেরার জন্য উপযুক্ত</li>
-    <li>৬ থেকে ৮ ঘন্টা পর্যন্ত ব্যাকআপ</li>
-    <li>12V/9V/5V মাল্টিপল আউটপুট</li>
-    <li>ওজনে হালকা এবং ব্যবহারে সহজ</li>
-  </ul>
-  <a href="#" class="btn order-btn">অর্ডার করুন</a>
- </div>
-
- <div class="product-card">
-  <img src="images/hoco headphone.jpg" alt="Hoco W35 Max Wireless Headphone">
-  <h3>Hoco W35 Max Wireless Bluetooth Headphone</h3>
-  <p class="price">মূল্য: ৳1400 মাত্র</p>
-  <ul>
-    <li>চমৎকার সাউন্ড কোয়ালিটি এবং বেস</li>
-    <li>খুবই আরামদায়ক ওভার-ইয়ার ডিজাইন</li>
-    <li>দীর্ঘ সময় ধরে ব্যবহারের জন্য উপযুক্ত ব্যাটারি</li>
-    <li>স্থিতিশীল ব্লুটুথ সংযোগ</li>
-    <li>কল করার জন্য বিল্ট-ইন মাইক্রোফোন</li>
-  </ul>
-  <a href="#" class="btn order-btn">অর্ডার করুন</a>
- </div>
-
-
+    <div class="product-card">
+      <img src="images/airpods pro 2nd gen.jpg" alt="AirPods Pro 2nd Gen">
+      <h3>Apple AirPods Pro (2nd Gen)</h3>
+      <p class="price">মূল্য: ৳799 মাত্র</p> 
+      <ul><li>নতুন প্রযুক্তি ও আরও ভালো ব্যাটারি ব্যাকআপ</li><li>Crystal Clear সাউন্ড কোয়ালিটি</li><li>অফিস, বাসা বা চলতে ফিরতে, সব জায়গায় পারফেক্ট</li><li>অর্ডার করুন আজই, সীমিত স্টকে পাচ্ছেন সেরা দামে!</li><li>অর্ডার করতে ইনবক্স করুন</li></ul>
+      <a href="#" class="btn order-btn">অর্ডার করুন</a>
+    </div>
+    <div class="product-card">
+      <img src="images/wpg ups.jpg" alt="WGP Mini UPS">
+      <h3>WGP Mini UPS</h3>
+      <p class="price">মূল্য: ৳1850 মাত্র</p>
+      <ul><li>10400mAh হাই ক্যাপাসিটি ব্যাকআপ</li><li>রাউটার, ONU, CCTV ও IP ক্যামেরার জন্য উপযুক্ত</li><li>৬ থেকে ৮ ঘন্টা পর্যন্ত ব্যাকআপ</li><li>12V/9V/5V মাল্টিপল আউটপুট</li><li>ওজনে হালকা এবং ব্যবহারে সহজ</li></ul>
+      <a href="#" class="btn order-btn">অর্ডার করুন</a>
+    </div>
+    <div class="product-card">
+      <img src="images/hoco headphone.jpg" alt="Hoco W35 Max Wireless Headphone">
+      <h3>Hoco W35 Max Wireless Bluetooth Headphone</h3>
+      <p class="price">মূল্য: ৳1400 মাত্র</p>
+      <ul><li>চমৎকার সাউন্ড কোয়ালিটি এবং বেস</li><li>খুবই আরামদায়ক ওভার-ইয়ার ডিজাইন</li><li>দীর্ঘ সময় ধরে ব্যবহারের জন্য উপযুক্ত ব্যাটারি</li><li>স্থিতিশীল ব্লুটুথ সংযোগ</li><li>কল করার জন্য বিল্ট-ইন মাইক্রোফোন</li></ul>
+      <a href="#" class="btn order-btn">অর্ডার করুন</a>
+    </div>
   </section>
 
   <div id="pagination-container"></div>
@@ -518,18 +401,6 @@
     <p>&copy; 2025 TechBindu. All rights reserved.</p>
   </footer>
 
- <style>
-      .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
-      .modal-content { background-color: #fefefe; margin: 10% auto; padding: 30px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 10px; position: relative; font-family: 'Hind Siliguri', sans-serif; }
-      .close-btn { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
-      .modal-content h3 { color: #0a8a0a; margin-bottom: 20px; text-align: center; }
-      .modal-content .form-group { margin-bottom: 15px; }
-      .modal-content label { display: block; margin-bottom: 5px; text-align: left; }
-      .modal-content input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
-      .modal-content .submit-btn { width: 100%; padding: 12px; background: #0a8a0a; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
-      .modal-content .submit-btn:hover { background-color: #086d08; }
-      #thankYouMessage { text-align: center; color: #0a8a0a; font-size: 18px; }
-    </style>
     <div id="orderModal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
@@ -540,6 +411,25 @@
             <div class="form-group"><label for="customerName">আপনার নাম</label><input type="text" id="customerName" name="customerName" required></div>
             <div class="form-group"><label for="address">সম্পূর্ণ ঠিকানা</label><input type="text" id="address" name="address" required></div>
             <div class="form-group"><label for="phoneNumber">ফোন নম্বর</label><input type="text" id="phoneNumber" name="phoneNumber" required></div>
+            
+            <div class="delivery-info">
+                এই পণ্য অর্ডার করলে পণ্যের মূল্যের সাথে ডেলিভারি চার্জ যুক্ত হবে।<br>
+                আমরা সারা বাংলাদেশে নিরাপদ ও দ্রুত ডেলিভারি সেবা প্রদান করি।
+            </div>
+            <div class="form-group">
+                <label>ডেলিভারি এলাকা নির্বাচন করুন:</label>
+                <div class="delivery-options">
+                    <input type="radio" id="insideGopalganj" name="delivery_location" value="50" required>
+                    <label for="insideGopalganj">গোপালগঞ্জ জেলার ভিতরে (৳50)</label>
+                    <br>
+                    <input type="radio" id="outsideGopalganj" name="delivery_location" value="130">
+                    <label for="outsideGopalganj">অন্যান্য জেলায় (৳130)</label>
+                </div>
+            </div>
+            <div class="total-price-display">
+                সর্বমোট মূল্য: <span id="totalPrice">--</span>
+            </div>
+
             <button type="submit" class="submit-btn" id="submitBtn">অর্ডার কনফার্ম করুন</button>
           </div>
           <div id="thankYouMessage" style="display: none;"><p>আপনার অর্ডারটি গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। 😊</p></div>
@@ -548,10 +438,8 @@
     </div>
 
     <script>
-      // All scripts are wrapped in DOMContentLoaded to ensure the page is loaded first
       document.addEventListener('DOMContentLoaded', function() {
 
-        // --- Order Modal Script ---
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4_WzkHKY3X6CTY3ws9ciRVScQrdGr7DHNOd7jKI4H-S6UR0_O39UjNRE3kssPL7BkcQ/exec';
         const modal = document.getElementById('orderModal');
         const closeBtn = document.querySelector('.close-btn');
@@ -561,20 +449,43 @@
         const formContent = document.getElementById('formContent');
         const thankYouMessage = document.getElementById('thankYouMessage');
         const submitBtn = document.getElementById('submitBtn');
+        let currentProductPrice = 0;
         
         orderButtons.forEach(button => {
           button.addEventListener('click', function(event) {
             event.preventDefault(); 
             const productCard = this.closest('.product-card');
             const productName = productCard.querySelector('h3').innerText;
+            const priceString = productCard.querySelector('.price').innerText;
+            
+            // Extract number from price string
+            currentProductPrice = parseInt(priceString.replace(/[^0-9]/g, ''), 10);
+
             productNameInput.value = productName;
             formContent.style.display = 'block';
             thankYouMessage.style.display = 'none';
             orderForm.reset();
+            document.getElementById('totalPrice').innerText = '৳' + currentProductPrice; // Show base price initially
+            
             modal.style.display = 'block';
           });
         });
 
+        // --- Delivery Charge Calculation ---
+        const deliveryRadios = document.querySelectorAll('input[name="delivery_location"]');
+        const totalPriceSpan = document.getElementById('totalPrice');
+
+        function calculateTotal() {
+            let deliveryCharge = 0;
+            const selectedRadio = document.querySelector('input[name="delivery_location"]:checked');
+            if (selectedRadio) {
+                deliveryCharge = parseInt(selectedRadio.value, 10);
+            }
+            const total = currentProductPrice + deliveryCharge;
+            totalPriceSpan.innerText = '৳' + total;
+        }
+        deliveryRadios.forEach(radio => radio.addEventListener('change', calculateTotal));
+        
         closeBtn.onclick = function() { modal.style.display = 'none'; }
         window.onclick = function(event) { if (event.target == modal) { modal.style.display = 'none'; } }
         
@@ -605,18 +516,16 @@
           });
         });
 
-        // --- Search, Pagination, and Mobile Toggle Scripts ---
         const searchInput = document.getElementById('searchInput');
         const allProductCards = Array.from(document.querySelectorAll('.product-card'));
         const paginationContainer = document.getElementById('pagination-container');
         const productsSection = document.querySelector('.products');
-        
         const productsPerPage = 6;
         let currentPage = 1;
 
         function setupPagination(totalPages, productsToPaginate) {
             paginationContainer.innerHTML = ''; 
-            if (totalPages <= 1) return; // Don't show pagination if there's only one page
+            if (totalPages <= 1) return;
 
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
@@ -627,7 +536,6 @@
                 }
                 btn.addEventListener('click', () => {
                     currentPage = i;
-                    // We only need to redisplay the products, not re-setup pagination from here
                     displayProducts(productsToPaginate);
                     updateActiveButton();
                     productsSection.scrollIntoView({ behavior: 'smooth' });
@@ -637,11 +545,9 @@
         }
         
         function updateActiveButton() {
-            // Remove active class from all buttons
             document.querySelectorAll('.pagination-btn').forEach(button => {
                 button.classList.remove('active');
             });
-            // Add active class to the correct button
             const activeBtn = paginationContainer.querySelector(`.pagination-btn:nth-child(${currentPage})`);
             if (activeBtn) {
                 activeBtn.classList.add('active');
@@ -674,8 +580,6 @@
         
         handleFilterAndPagination();
 
-
-        // --- Mobile Search Icon Toggle JavaScript ---
         const searchIconBtn = document.getElementById('searchIconBtn');
         const searchContainer = document.querySelector('.search-container');
         const mainHeader = document.querySelector('header');
