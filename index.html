@@ -12,7 +12,22 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Hind Siliguri', sans-serif; background-color: #f9f9f9; color: #333; position: relative; }
-    body::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('for website.jpg'); background-repeat: no-repeat; background-position: center center; background-size: cover; opacity: 0.05; z-index: -1; }
+    
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.12; /* Increased opacity to make it more visible */
+    }
+    .video-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     header { background-color: #ffffff; padding: 10px 25px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; gap: 20px; }
     .header-left { display: flex; align-items: center; gap: 15px; }
     .header-left .logo-link { display: flex; align-items: center; }
@@ -99,6 +114,12 @@
   </style>
 </head>
 <body>
+  <div class="video-background">
+    <video autoplay loop muted playsinline>
+        <source src="techbindu intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  </div>
 
   <header>
     <div class="header-left">
@@ -287,6 +308,7 @@
         cartItemsContainer.addEventListener('click', (e) => {
             const target = e.target;
             const productId = target.dataset.id;
+            if (!productId) return;
             const itemInCart = cart.find(item => item.id === productId);
 
             if (target.classList.contains('cart-item-remove')) { updateCartQuantity(productId, 0); }
@@ -508,3 +530,4 @@
     </script>
 </body>
 </html>
+}
