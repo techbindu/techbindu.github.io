@@ -169,7 +169,7 @@
 
     h2.section-title { margin: 40px 0 20px; color: var(--primary-color); text-align: center; font-size: 30px; }
     .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-    .product-card { background: var(--card-bg); border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px; transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s; text-align: center; display: none; flex-direction: column; justify-content: space-between; }
+    .product-card { background: var(--card-bg); border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px; transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s; text-align: center; display: none; flex-direction: column; justify-content: space-between; cursor: pointer; }
     .dark-mode .product-card { box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
     .product-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
     .dark-mode .product-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
@@ -236,6 +236,20 @@
     .cart-item-quantity .item-quantity { font-size: 16px; padding: 0 5px; }
     .cart-item-total { min-width: 80px; text-align: right; }
     .cart-item-remove { color: red; cursor: pointer; font-size: 20px; }
+    
+    /* Product Preview Modal Styles */
+    #productPreviewModal .modal-content { max-width: 800px; }
+    #productPreviewContent { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: flex-start; }
+    #previewImage { max-width: 100%; border-radius: 8px; }
+    #previewDetails h3 { font-size: 24px; color: var(--primary-color); margin-bottom: 10px; text-align: left; }
+    #previewDetails .price { font-size: 20px; font-weight: bold; color: var(--secondary-color); margin-bottom: 15px; }
+    #previewDescription { font-size: 16px; line-height: 1.7; margin-bottom: 20px; text-align: left; }
+    #previewButtonGroup { display: flex; gap: 10px; }
+    @media (max-width: 600px) {
+        #productPreviewContent { grid-template-columns: 1fr; }
+        #previewDetails h3 { text-align: center; }
+        #previewDetails .price { text-align: center; }
+    }
 
   </style>
 </head>
@@ -285,20 +299,187 @@
   
   <h2 class="section-title">📦 আমাদের পণ্যসমূহ</h2>
   <section class="products">
-    <div class="product-card" data-product-id="apple_20w_adapter" data-product-name="Apple 20W USB-C Power Adapter" data-price="2599"><img src="images/apple_20w_adapter.jpeg" alt="Apple Adapter"><h3>Apple 20W USB-C Power Adapter</h3><p class="price">মূল্য: ৳2599 মাত্র</p><ul><li>Fast Charging | Optimal Performance</li><li>iPhone, iPad, AirPods ও Apple Watch এর জন্য উপযোগী</li><li>USB-C Interface, 3-Pin Plug</li><li>Cable অন্তর্ভুক্ত না</li><li>Trusted Apple Quality</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="apple_cable_2m" data-product-name="Apple USB-C to Lightning Cable (2m)" data-price="499"><img src="images/usb_c_to_lightning.jpeg" alt="Apple Cable"><h3>Apple USB-C to Lightning Cable (2m)</h3><p class="price">মূল্য: ৳499 মাত্র</p><ul><li>iPhone ও iPad এর সাথে সামঞ্জস্যপূর্ণ</li><li>Super Fast Data Sync</li><li>Durable ও Long-lasting</li><li>স্টক সীমিত!</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="samsung_25w_adapter" data-product-name="Samsung Super Fast Charger 25W PD Adapter" data-price="1299"><img src="images/samsung_25w_adapter.jpeg" alt="Samsung Charger"><h3>Samsung Super Fast Charger 25W PD Adapter</h3><p class="price">মূল্য: ৳1299 মাত্র</p><ul><li>⚡ Super Fast Charging Support</li><li>🔌 USB-C PD (Power Delivery)</li><li>🔥 Overheat Protection</li><li>📱 Samsung ফোনের জন্য উপযোগী</li><li>✅ Trusted Original Quality</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="m10_earbuds" data-product-name="M10 TWS Wireless Earbuds" data-price="449"><img src="images/m10_wireless_earbuds.jpeg" alt="M10 Earbuds"><h3>M10 TWS Wireless Earbuds</h3><p class="price">মূল্য: ৳449 মাত্র</p><ul><li>🔋 2500mAh Charging Box</li><li>🎧 HD Stereo Sound & Noise Reduction</li><li>💧 Waterproof & Sweatproof Design</li><li>🔗 সব ডিভাইসের সাথে Bluetooth Compatible</li><li>✅ স্টাইলিশ ও সাশ্রয়ী</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="smart_flask" data-product-name="Smart LED Temperature Flask" data-price="599"><img src="images/stainless_steel_flask.jpeg" alt="Smart Flask"><h3>Smart LED Temperature Flask</h3><p class="price">মূল্য: ৳599 মাত্র</p><ul><li>🌡️ LED Touch Temperature Display</li><li>🔥 12-24 ঘন্টা গরম/ঠান্ডা রাখে</li><li>🧊 Double Wall Stainless Steel</li><li>🚫 BPA-Free এবং Leakproof</li><li>✅ স্টাইলিশ ও টেকসই</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="awei_y887_speaker" data-product-name="Awei Y887 Portable Bluetooth Speaker" data-price="3699"><img src="images/prodact_6.jpeg" alt="Awei Y887"><h3>Awei Y887 Portable Bluetooth Speaker</h3><p class="price">মূল্য: ৳3699 মাত্র</p><ul><li>✅ Super Bass & Clear Sound</li><li>✅ Portable & Stylish Design</li><li>✅ Bluetooth 5.0 Compatible</li><li>✅ Long Battery Backup</li><li>✅ FM, USB, AUX Supported</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="awei_p5k_powerbank" data-product-name="Awei P5K 10000 mAh Power Bank" data-price="999"><img src="images/prodact_7.jpeg" alt="Awei P5K"><h3>Awei P5K 10000 mAh Power Bank</h3><p class="price">মূল্য: ৳999 মাত্র</p><ul><li>✅ Dual USB Output</li><li>✅ Compact & Lightweight</li><li>✅ Safe & Fast Charging</li><li>✅ LED Indicator </li><li>✅ Best Seller!</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="t800_smartwatch" data-product-name="T800 Ultra smart watch" data-price="850"><img src="images/prodact_8.jpeg" alt="T800 Ultra"><h3>T800 Ultra smart watch </h3><p class="price">মূল্য: ৳850 মাত্র</p><ul><li>🌬️ Heart Rate Sensor</li><li>🔋 Wireless Charging </li><li>🌈 Available in Multiple Colors</li><li>✅ Waterproof Design</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="ultrapods_pro" data-product-name="Ultrapods Pro True Wireless Earbuds" data-price="550"><img src="images/prodact_9.jpeg" alt="Ultrapods Pro"><h3>Ultrapods Pro True Wireless Earbuds</h3><p class="price">মূল্য: ৳550 মাত্র</p><ul><li>🎧 Super Clear HD Sound</li><li>✅ Water Resistant (IPX4)</li><li>✅ LED Battery Display</li><li>✅ Touch Control & Built-in Microphone</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="vdenmenv_dp43_powerbank" data-product-name="VDENMENV DP43 – 10000mAh Power Bank" data-price="1399"><img src="images/prodact_10.jpeg" alt="VDENMENV DP43"><h3>VDENMENV DP43 – 10000mAh Power Bank</h3><p class="price">মূল্য: ৳1399 মাত্র</p><ul><li>⚡ 22.5W PD + QC 3.0 Fast Charging</li><li>✅ Digital Display</li><li>✅ Type-C + USB Output</li><li>✅ Slim, Stylish & Portable</li> <li>✅ Budget Friendly</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="casepro_rugged_cover" data-product-name="CasePro Rugged Armor Back Cover" data-price="350"><img src="images/prodact_11.jpeg" alt="CasePro Rugged"><h3>CasePro Rugged Armor Back Cover</h3><p class="price">মূল্য: ৳350 মাত্র</p><ul><li>📱 Shockproof 3-Part Design</li><li>🧲 Camera Protection</li><li>✨ Slim & Elegant Finish</li><li>✅ Multiple Color Options</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="airpods_pro_2nd_gen" data-product-name="Apple AirPods Pro (2nd Gen)" data-price="799"><img src="images/airpods pro 2nd gen.jpg" alt="AirPods Pro 2nd Gen"><h3>Apple AirPods Pro (2nd Gen)</h3><p class="price">মূল্য: ৳799 মাত্র</p> <ul><li>নতুন প্রযুক্তি ও আরও ভালো ব্যাটারি ব্যাকআপ</li><li>Crystal Clear সাউন্ড কোয়ালিটি</li><li>অফিস, বাসা বা চলতে ফিরতে, সব জায়গায় পারফেক্ট</li><li>অর্ডার করুন আজই, সীমিত স্টকে পাচ্ছেন সেরা দামে!</li><li>অর্ডার করতে ইনবক্স করুন</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="wgp_mini_ups" data-product-name="WGP Mini UPS" data-price="1850"><img src="images/wpg ups.jpg" alt="WGP Mini UPS"><h3>WGP Mini UPS</h3><p class="price">মূল্য: ৳1850 মাত্র</p><ul><li>10400mAh হাই ক্যাপাসিটি ব্যাকআপ</li><li>রাউটার, ONU, CCTV ও IP ক্যামেরার জন্য উপযুক্ত</li><li>৬ থেকে ৮ ঘন্টা পর্যন্ত ব্যাকআপ</li><li>12V/9V/5V মাল্টিপল আউটপুট</li><li>ওজনে হালকা এবং ব্যবহারে সহজ</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
-    <div class="product-card" data-product-id="hoco_w35_headphone" data-product-name="Hoco W35 Max Wireless Bluetooth Headphone" data-price="1400"><img src="images/hoco headphone.jpg" alt="Hoco W35 Max Wireless Headphone"><h3>Hoco W35 Max Wireless Bluetooth Headphone</h3><p class="price">মূল্য: ৳1400 মাত্র</p><ul><li>চমৎকার সাউন্ড কোয়ালিটি এবং বেস</li><li>খুবই আরামদায়ক ওভার-ইয়ার ডিজাইন</li><li>দীর্ঘ সময় ধরে ব্যবহারের জন্য উপযুক্ত ব্যাটারি</li><li>স্থিতিশীল ব্লুটুথ সংযোগ</li><li>কল করার জন্য বিল্ট-ইন মাইক্রোফোন</li></ul><div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div></div>
+    <div class="product-card" 
+         data-product-id="apple_20w_adapter" 
+         data-product-name="Apple 20W USB-C Power Adapter" 
+         data-price="2599" 
+         data-img-src="images/apple_20w_adapter.jpeg"
+         data-description="আপনার iPhone, iPad বা AirPods-এর জন্য দ্রুত এবং কার্যকর চার্জিংয়ের সেরা সমাধান। যেকোনো USB-C সমর্থিত ডিভাইসের সাথে ব্যবহারযোগ্য। সর্বোচ্চ পারফরম্যান্সের জন্য Apple এটি iPad Pro এবং iPad Air-এর সাথে ব্যবহারের পরামর্শ দেয়।">
+        <img src="images/apple_20w_adapter.jpeg" alt="Apple Adapter">
+        <h3>Apple 20W USB-C Power Adapter</h3>
+        <p class="price">মূল্য: ৳2599 মাত্র</p>
+        <ul><li>Fast Charging | Optimal Performance</li><li>iPhone, iPad, AirPods ও Apple Watch এর জন্য উপযোগী</li><li>USB-C Interface, 3-Pin Plug</li><li>Cable অন্তর্ভুক্ত না</li><li>Trusted Apple Quality</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+         data-product-id="apple_cable_2m" 
+         data-product-name="Apple USB-C to Lightning Cable (2m)" 
+         data-price="499"
+         data-img-src="images/usb_c_to_lightning.jpeg"
+         data-description="iPhone ও iPad এর সাথে সামঞ্জস্যপূর্ণ এই কেবলটি দ্রুত ডেটা সিঙ্ক এবং নির্ভরযোগ্য চার্জিং নিশ্চিত করে। টেকসই ও দীর্ঘস্থায়ী ডিজাইন আপনার ডিভাইস ব্যবহারে আনে স্বাচ্ছন্দ্য। প্রতিদিনের ব্যবহারের জন্য এটি একটি আদর্শ পছন্দ।">
+        <img src="images/usb_c_to_lightning.jpeg" alt="Apple Cable">
+        <h3>Apple USB-C to Lightning Cable (2m)</h3>
+        <p class="price">মূল্য: ৳499 মাত্র</p>
+        <ul><li>iPhone ও iPad এর সাথে সামঞ্জস্যপূর্ণ</li><li>Super Fast Data Sync</li><li>Durable ও Long-lasting</li><li>স্টক সীমিত!</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="samsung_25w_adapter" 
+        data-product-name="Samsung Super Fast Charger 25W PD Adapter" 
+        data-price="1299"
+        data-img-src="images/samsung_25w_adapter.jpeg"
+        data-description="সুপার ফাস্ট চার্জিং সাপোর্ট এবং নিরাপদ পাওয়ার ডেলিভারির জন্য স্যামসাং-এর এই চার্জার অনন্য। USB-C PD প্রযুক্তি ও ওভারহিট প্রোটেকশনসহ আসে, যা আপনার ফোনের সুরক্ষা নিশ্চিত করে। আসল স্যামসাং কোয়ালিটি নিয়ে নির্ভার থাকুন।">
+        <img src="images/samsung_25w_adapter.jpeg" alt="Samsung Charger">
+        <h3>Samsung Super Fast Charger 25W PD Adapter</h3>
+        <p class="price">মূল্য: ৳1299 মাত্র</p>
+        <ul><li>⚡ Super Fast Charging Support</li><li>🔌 USB-C PD (Power Delivery)</li><li>🔥 Overheat Protection</li><li>📱 Samsung ফোনের জন্য উপযোগী</li><li>✅ Trusted Original Quality</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="m10_earbuds" 
+        data-product-name="M10 TWS Wireless Earbuds" 
+        data-price="449"
+        data-img-src="images/m10_wireless_earbuds.jpeg"
+        data-description="HD স্টেরিও সাউন্ড, নয়েজ রিডাকশন এবং 2500mAh চার্জিং বক্সসহ আসে এই ইয়ারবাড। ওয়াটারপ্রুফ ও ব্লুটুথ কম্প্যাটিবল ডিজাইনের কারণে সব ডিভাইসের সাথে সহজে মানিয়ে যায়। স্টাইলিশ এবং সাশ্রয়ী এই গ্যাজেটটি হবে আপনার দৈনন্দিন সঙ্গী।">
+        <img src="images/m10_wireless_earbuds.jpeg" alt="M10 Earbuds">
+        <h3>M10 TWS Wireless Earbuds</h3>
+        <p class="price">মূল্য: ৳449 মাত্র</p>
+        <ul><li>🔋 2500mAh Charging Box</li><li>🎧 HD Stereo Sound & Noise Reduction</li><li>💧 Waterproof & Sweatproof Design</li><li>🔗 সব ডিভাইসের সাথে Bluetooth Compatible</li><li>✅ স্টাইলিশ ও সাশ্রয়ী</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="smart_flask" 
+        data-product-name="Smart LED Temperature Flask" 
+        data-price="599"
+        data-img-src="images/stainless_steel_flask.jpeg"
+        data-description="LED ডিসপ্লে সহ এই ফ্লাস্কে সহজেই পানীয়র তাপমাত্রা জানতে পারবেন। 12–24 ঘণ্টা পর্যন্ত পানীয় গরম বা ঠান্ডা রাখে। BPA-Free, স্টেইনলেস স্টিল ও লিকপ্রুফ ডিজাইন একে করে তুলেছে স্বাস্থ্যসম্মত ও টেকসই।">
+        <img src="images/stainless_steel_flask.jpeg" alt="Smart Flask">
+        <h3>Smart LED Temperature Flask</h3>
+        <p class="price">মূল্য: ৳599 মাত্র</p>
+        <ul><li>🌡️ LED Touch Temperature Display</li><li>🔥 12-24 ঘন্টা গরম/ঠান্ডা রাখে</li><li>🧊 Double Wall Stainless Steel</li><li>🚫 BPA-Free এবং Leakproof</li><li>✅ স্টাইলিশ ও টেকসই</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="awei_y887_speaker" 
+        data-product-name="Awei Y887 Portable Bluetooth Speaker" 
+        data-price="3699"
+        data-img-src="images/prodact_6.jpeg"
+        data-description="সুপার বেস এবং ক্রিস্টাল ক্লিয়ার সাউন্ডসহ পোর্টেবল এই স্পিকারটি যেকোনো পরিবেশে মিউজিক উপভোগের সুযোগ দেয়। Bluetooth 5.0, FM, USB ও AUX সাপোর্টের কারণে এটি একটি অল-ইন-ওয়ান ডিভাইস। দীর্ঘ ব্যাটারি ব্যাকআপ সহ এটি ভ্রমণের জন্য পারফেক্ট।">
+        <img src="images/prodact_6.jpeg" alt="Awei Y887">
+        <h3>Awei Y887 Portable Bluetooth Speaker</h3>
+        <p class="price">মূল্য: ৳3699 মাত্র</p>
+        <ul><li>✅ Super Bass & Clear Sound</li><li>✅ Portable & Stylish Design</li><li>✅ Bluetooth 5.0 Compatible</li><li>✅ Long Battery Backup</li><li>✅ FM, USB, AUX Supported</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="awei_p5k_powerbank" 
+        data-product-name="Awei P5K 10000 mAh Power Bank" 
+        data-price="999"
+        data-img-src="images/prodact_7.jpeg"
+        data-description="ডুয়াল USB আউটপুট ও দ্রুত চার্জিং সুবিধাসহ আসে এই পাওয়ার ব্যাংক। কমপ্যাক্ট এবং লাইটওয়েট ডিজাইন সহজে বহনযোগ্য করে তোলে। LED ইন্ডিকেটরের মাধ্যমে চার্জ লেভেল সহজেই জানা যায়। নিরাপদ ও কার্যকর চার্জিংয়ের জন্য এটি Best Seller।">
+        <img src="images/prodact_7.jpeg" alt="Awei P5K">
+        <h3>Awei P5K 10000 mAh Power Bank</h3>
+        <p class="price">মূল্য: ৳999 মাত্র</p>
+        <ul><li>✅ Dual USB Output</li><li>✅ Compact & Lightweight</li><li>✅ Safe & Fast Charging</li><li>✅ LED Indicator </li><li>✅ Best Seller!</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="t800_smartwatch" 
+        data-product-name="T800 Ultra smart watch" 
+        data-price="850"
+        data-img-src="images/prodact_8.jpeg"
+        data-description="হার্ট রেট সেন্সর, ওয়্যারলেস চার্জিং এবং ওয়াটারপ্রুফ ডিজাইনসহ একটি স্মার্টওয়াচ। ফ্যাশনেবল লুক ও মাল্টিপল কালারের ভ্যারিয়েশনে পাওয়া যায়। স্বাস্থ্য মনিটরিং এবং দৈনন্দিন ব্যবহারের জন্য এটি আদর্শ সঙ্গী।">
+        <img src="images/prodact_8.jpeg" alt="T800 Ultra">
+        <h3>T800 Ultra smart watch </h3>
+        <p class="price">মূল্য: ৳850 মাত্র</p>
+        <ul><li>🌬️ Heart Rate Sensor</li><li>🔋 Wireless Charging </li><li>🌈 Available in Multiple Colors</li><li>✅ Waterproof Design</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="ultrapods_pro" 
+        data-product-name="Ultrapods Pro True Wireless Earbuds" 
+        data-price="550"
+        data-img-src="images/prodact_9.jpeg"
+        data-description="সুপার ক্লিয়ার HD সাউন্ড, টাচ কন্ট্রোল এবং LED ডিসপ্লে সহ এই ইয়ারবাড যেকোনো ডিভাইসের সাথে সহজেই ব্যবহারযোগ্য। IPX4 ওয়াটার রেজিস্ট্যান্স এটিকে আরও টেকসই করে তোলে। মিউজিক ও কলের জন্য এটি হবে আপনার পারফেক্ট কম্প্যানিয়ন।">
+        <img src="images/prodact_9.jpeg" alt="Ultrapods Pro">
+        <h3>Ultrapods Pro True Wireless Earbuds</h3>
+        <p class="price">মূল্য: ৳550 মাত্র</p>
+        <ul><li>🎧 Super Clear HD Sound</li><li>✅ Water Resistant (IPX4)</li><li>✅ LED Battery Display</li><li>✅ Touch Control & Built-in Microphone</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="vdenmenv_dp43_powerbank" 
+        data-product-name="VDENMENV DP43 – 10000mAh Power Bank" 
+        data-price="1399"
+        data-img-src="images/prodact_10.jpeg"
+        data-description="22.5W PD + QC 3.0 ফাস্ট চার্জিং প্রযুক্তি সহ একটি শক্তিশালী পাওয়ার ব্যাংক। ডিজিটাল ডিসপ্লেতে ব্যাটারির অবস্থা সহজেই জানা যায়। স্লিম ও স্টাইলিশ ডিজাইনের কারণে সহজেই বহনযোগ্য এবং বাজেট-ফ্রেন্ডলি।">
+        <img src="images/prodact_10.jpeg" alt="VDENMENV DP43">
+        <h3>VDENMENV DP43 – 10000mAh Power Bank</h3>
+        <p class="price">মূল্য: ৳1399 মাত্র</p>
+        <ul><li>⚡ 22.5W PD + QC 3.0 Fast Charging</li><li>✅ Digital Display</li><li>✅ Type-C + USB Output</li><li>✅ Slim, Stylish & Portable</li> <li>✅ Budget Friendly</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="casepro_rugged_cover" 
+        data-product-name="CasePro Rugged Armor Back Cover" 
+        data-price="350"
+        data-img-src="images/prodact_11.jpeg"
+        data-description="শকপ্রুফ 3-পার্ট ডিজাইন এবং ক্যামেরা প্রোটেকশন সহ একটি মজবুত ব্যাক কভার। স্লিম ও এলিগ্যান্ট লুক আপনার ফোনকে করবে আরও স্টাইলিশ। একাধিক রঙে পাওয়া যায়, যাতে আপনার ফোনের সাথে মানিয়ে যায় নিখুঁতভাবে।">
+        <img src="images/prodact_11.jpeg" alt="CasePro Rugged">
+        <h3>CasePro Rugged Armor Back Cover</h3>
+        <p class="price">মূল্য: ৳350 মাত্র</p>
+        <ul><li>📱 Shockproof 3-Part Design</li><li>🧲 Camera Protection</li><li>✨ Slim & Elegant Finish</li><li>✅ Multiple Color Options</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="airpods_pro_2nd_gen" 
+        data-product-name="Apple AirPods Pro (2nd Gen)" 
+        data-price="799"
+        data-img-src="images/airpods pro 2nd gen.jpg"
+        data-description="Crystal Clear সাউন্ড কোয়ালিটি এবং উন্নত ব্যাটারি ব্যাকআপ সহ নতুন প্রজন্মের AirPods। অফিস, বাসা বা ভ্রমণ—সব জায়গায় ব্যবহার উপযোগী। সীমিত স্টকে পাচ্ছেন সেরা দামে, তাই দেরি না করে অর্ডার করুন।">
+        <img src="images/airpods pro 2nd gen.jpg" alt="AirPods Pro 2nd Gen">
+        <h3>Apple AirPods Pro (2nd Gen)</h3>
+        <p class="price">মূল্য: ৳799 মাত্র</p> 
+        <ul><li>নতুন প্রযুক্তি ও আরও ভালো ব্যাটারি ব্যাকআপ</li><li>Crystal Clear সাউন্ড কোয়ালিটি</li><li>অফিস, বাসা বা চলতে ফিরতে, সব জায়গায় পারফেক্ট</li><li>অর্ডার করুন আজই, সীমিত স্টকে পাচ্ছেন সেরা দামে!</li><li>অর্ডার করতে ইনবক্স করুন</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="wgp_mini_ups" 
+        data-product-name="WGP Mini UPS" 
+        data-price="1850"
+        data-img-src="images/wpg ups.jpg"
+        data-description="10400mAh হাই ক্যাপাসিটি ব্যাটারি সহ একটি শক্তিশালী মিনি UPS। রাউটার, ONU, CCTV ও IP ক্যামেরার জন্য আদর্শ। ৬–৮ ঘণ্টা পর্যন্ত ব্যাকআপ দেয় এবং 12V/9V/5V আউটপুট সমর্থন করে। হালকা ও সহজে ব্যবহারযোগ্য।">
+        <img src="images/wpg ups.jpg" alt="WGP Mini UPS">
+        <h3>WGP Mini UPS</h3>
+        <p class="price">মূল্য: ৳1850 মাত্র</p>
+        <ul><li>10400mAh হাই ক্যাপাসিটি ব্যাকআপ</li><li>রাউটার, ONU, CCTV ও IP ক্যামেরার জন্য উপযুক্ত</li><li>৬ থেকে ৮ ঘন্টা পর্যন্ত ব্যাকআপ</li><li>12V/9V/5V মাল্টিপল আউটপুট</li><li>ওজনে হালকা এবং ব্যবহারে সহজ</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
+
+    <div class="product-card" 
+        data-product-id="hoco_w35_headphone" 
+        data-product-name="Hoco W35 Max Wireless Bluetooth Headphone" 
+        data-price="1400"
+        data-img-src="images/hoco headphone.jpg"
+        data-description="ডীপ বেস এবং চমৎকার সাউন্ড কোয়ালিটি সহ একটি আরামদায়ক হেডফোন। ওভার-ইয়ার ডিজাইন দীর্ঘ সময় ব্যবহারে আরামদায়ক করে তোলে। স্থিতিশীল ব্লুটুথ কানেকশন ও বিল্ট-ইন মাইক্রোফোনসহ এটি আপনার মিউজিক ও কলের জন্য উপযুক্ত।">
+        <img src="images/hoco headphone.jpg" alt="Hoco W35 Max Wireless Headphone">
+        <h3>Hoco W35 Max Wireless Bluetooth Headphone</h3>
+        <p class="price">মূল্য: ৳1400 মাত্র</p>
+        <ul><li>চমৎকার সাউন্ড কোয়ালিটি এবং বেস</li><li>খুবই আরামদায়ক ওভার-ইয়ার ডিজাইন</li><li>দীর্ঘ সময় ধরে ব্যবহারের জন্য উপযুক্ত ব্যাটারি</li><li>স্থিতিশীল ব্লুটুথ সংযোগ</li><li>কল করার জন্য বিল্ট-ইন মাইক্রোফোন</li></ul>
+        <div class="button-group"><button class="btn order-now-btn">অর্ডার করুন</button><button class="btn add-to-cart-btn">কার্টে যোগ করুন</button></div>
+    </div>
   </section>
 
   <div id="pagination-container"></div>
@@ -364,6 +545,25 @@
             </form>
         </div>
     </div>
+
+    <div id="productPreviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="previewCloseBtn">&times;</span>
+            <div id="productPreviewContent">
+                <div id="previewImageContainer">
+                    <img src="" alt="Product Image" id="previewImage">
+                </div>
+                <div id="previewDetails">
+                    <h3 id="previewName"></h3>
+                    <p class="price" id="previewPrice"></p>
+                    <p id="previewDescription"></p>
+                    <div id="previewButtonGroup" class="button-group">
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
       // Preloader Script
@@ -638,21 +838,73 @@
             .finally(() => { submitBtn.disabled = false; submitBtn.innerText = 'অর্ডার কনফার্ম করুন'; });
         });
 
+        // --- NEW --- Product Preview Modal Logic
+        const previewModal = document.getElementById('productPreviewModal');
+        const previewCloseBtn = document.getElementById('previewCloseBtn');
+        
+        function openPreviewModal(productCard) {
+            // Populate modal with data from the product card
+            document.getElementById('previewImage').src = productCard.dataset.imgSrc;
+            document.getElementById('previewName').innerText = productCard.dataset.productName;
+            document.getElementById('previewPrice').innerText = `মূল্য: ৳${productCard.dataset.price} মাত্র`;
+            document.getElementById('previewDescription').innerText = productCard.dataset.description;
+
+            // Create and add buttons
+            const buttonGroup = document.getElementById('previewButtonGroup');
+            buttonGroup.innerHTML = ''; // Clear previous buttons
+
+            const orderBtn = document.createElement('button');
+            orderBtn.className = 'btn order-now-btn';
+            orderBtn.innerText = 'অর্ডার করুন';
+            orderBtn.onclick = function() {
+                previewModal.style.display = 'none'; // Close preview
+                openSingleOrderModal(productCard);  // Open order modal
+            };
+
+            const cartBtn = document.createElement('button');
+            cartBtn.className = 'btn add-to-cart-btn';
+            cartBtn.innerText = 'কার্টে যোগ করুন';
+            cartBtn.onclick = function(event) {
+                addToCart(productCard.dataset.productId, productCard.dataset.productName, parseInt(productCard.dataset.price, 10));
+                const target = event.target;
+                target.innerText = 'যোগ হয়েছে!';
+                setTimeout(() => { target.innerText = 'কার্টে যোগ করুন'; }, 1500);
+            };
+
+            buttonGroup.appendChild(orderBtn);
+            buttonGroup.appendChild(cartBtn);
+            
+            // Show the modal
+            previewModal.style.display = 'block';
+        }
+
+        previewCloseBtn.onclick = () => previewModal.style.display = 'none';
+        // --- END NEW ---
+
+
         productsSection.addEventListener('click', function(event) {
             const target = event.target;
             const productCard = target.closest('.product-card');
             if (!productCard) return;
 
+            // If a button inside the card is clicked, handle it
             if (target.classList.contains('add-to-cart-btn')) {
                 event.preventDefault();
                 addToCart(productCard.dataset.productId, productCard.dataset.productName, parseInt(productCard.dataset.price, 10));
                 const originalText = target.innerText;
                 target.innerText = 'যোগ হয়েছে!';
                 setTimeout(() => { target.innerText = 'কার্টে যোগ করুন'; }, 1500);
+                return; // Stop further execution
             }
             if (target.classList.contains('order-now-btn')) {
                 event.preventDefault();
                 openSingleOrderModal(productCard);
+                return; // Stop further execution
+            }
+
+            // --- NEW --- If the card itself (but not a button) is clicked, open preview
+            if (!target.classList.contains('btn')) {
+                openPreviewModal(productCard);
             }
         });
         
@@ -708,6 +960,19 @@
         }
         
         searchInput.addEventListener('keyup', handleFilterAndPagination);
+        
+        // Close modals if clicked outside of the content
+        window.onclick = function(event) {
+            if (event.target == cartModal) {
+                cartModal.style.display = "none";
+            }
+            if (event.target == singleOrderModal) {
+                singleOrderModal.style.display = "none";
+            }
+            if (event.target == previewModal) {
+                previewModal.style.display = "none";
+            }
+        }
         
         updateCartIcon();
         handleFilterAndPagination();
